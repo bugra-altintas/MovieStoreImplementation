@@ -27,3 +27,5 @@ Conversion of a BST of size 5 into a complete BST:
 Insertion example when the parameter key does not exist within the tree:
 ![Insertion example](/figure2.png)
 
+Removal of a node having two children
+![Removal example](/figure3.png)
