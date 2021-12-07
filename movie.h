@@ -5,7 +5,7 @@
 #include <ostream>
 
 
-class Movie //do not change this file
+class Movie
 {
   public:
     Movie(const std::string &, const std::string &,

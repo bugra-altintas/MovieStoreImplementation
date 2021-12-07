@@ -1,35 +1,29 @@
 #include "moviestore.h"
 #include <iostream>
 
-MovieStore::MovieStore( ) //implemented, do not change
+// Default constructor
+MovieStore::MovieStore( )
 {
 }
 
-
-// IMPLEMENT
+/* A function inserts the parameter Movie object into all three BST indices. Note that actual is stored
+inside some node of primaryIndex as a copy of the parameter of this function and the other indices
+are received the address of the location corresponding to that portion of the primaryIndex node
+and store this as a pointer variable within their nodes. Consequently indices based on SKey
+holds up less space in total. */
 void
-MovieStore::insert(const Movie & movie)//DONE 
+MovieStore::insert(const Movie & movie)
 {
 	primaryIndex.insert(movie.getID(),movie);
 	Movie *movie3 = &(primaryIndex.find(movie.getID())->data);
 	const Movie* movie2 = movie3;
 	SKey key(movie);
-	//std::cout << "Primary tree:" << std::endl;,
-	//printPrimarySorted();
-	//std::cout << "INSERTING IN SECONDARY: " << std::endl;
 	secondaryIndex.insert(key,movie2);
-	//std::cout << "Secondary tree:" << std::endl;
-	//printSecondarySorted();
-	//std::cout << "INSERTING IN TERNARY: " << std::endl;
 	ternaryIndex.insert(key,movie3);
-	//std::cout << "Ternary tree:" << std::endl;
-	//printTernarySorted();
-	//std::cout << "***************************************************************" << std::endl;
-	
 }
 
 
-// IMPLEMENT
+// A function removes the Movie with given id from all indices.
 void
 MovieStore::remove(const std::string & id)
 {
@@ -45,7 +39,7 @@ MovieStore::remove(const std::string & id)
 }
 
 
-// IMPLEMENT
+// A function removes the Movie with given title and director from all indices.
 void
 MovieStore::remove(const std::string & title,
                   const std::string & director)
@@ -62,9 +56,9 @@ MovieStore::remove(const std::string & title,
 }
 
 
-// IMPLEMENT
+// A function removes all movies with given title from all three indices.
 void
-MovieStore::removeAllMoviesWithTitle(const std::string & title) //DONE
+MovieStore::removeAllMoviesWithTitle(const std::string & title) 
 {
 	std::string first,last;
 	first = "a";
@@ -101,18 +95,18 @@ MovieStore::removeAllMoviesWithTitle(const std::string & title) //DONE
 }
 
 
-// IMPLEMENT
+// A function updates the status of the movie with given id as true indicating that the movie is available in store.
 void
-MovieStore::makeAvailable(const std::string & id) //DONE
+MovieStore::makeAvailable(const std::string & id) 
 {
 	if(primaryIndex.find(id))
 		primaryIndex.find(id)->data.setAvailable();
 }
 
 
-// IMPLEMENT
+// A function updates the status of the movie with given title and director as false indicating that the movie is not available in store.
 void
-MovieStore::makeUnavailable(const std::string & title, //DONE
+MovieStore::makeUnavailable(const std::string & title, 
                            const std::string & director)
 {
 	SKey key(title,director);
@@ -121,9 +115,9 @@ MovieStore::makeUnavailable(const std::string & title, //DONE
 }
 
 
-// IMPLEMENT
+// A function updates company fields of all movies with given director.
 void
-MovieStore::updateCompany(const std::string & director, //DONE
+MovieStore::updateCompany(const std::string & director, 
                            const std::string & Company)
 {
 	std::string first,last;
@@ -139,11 +133,13 @@ MovieStore::updateCompany(const std::string & director, //DONE
 }
 
 
-// IMPLEMENT
+/* A function prints each Movie object whose id member falls within the closed interval of the first and the second
+parameter of this function onto the console if they were produced no earlier than the third parameter of the function 
+whose default value is 0. */
 void
 MovieStore::printMoviesWithID(const std::string & id1,
                               const std::string & id2,
-                              unsigned short since) const //DONE
+                              unsigned short since) const 
 {
 	std::list<BinarySearchTree<std::string, Movie, MovieBalanceCondition>::Node *> ranges = primaryIndex.find(id1,id2);
 	while(!ranges.empty()){
@@ -155,11 +151,12 @@ MovieStore::printMoviesWithID(const std::string & id1,
 }
 
 
-// IMPLEMENT
+/* A function prints each Movie object whose director member is equal to the first parameter and title member
+falls within the closed range of the second and the third parameters of the function onto the console. */
 void
 MovieStore::printMoviesOfDirector(const std::string & director,
                                   const std::string & first,
-                                  const std::string & last) const //DONE
+                                  const std::string & last) const 
 {
 	SKey key1(first,director);
 	SKey key2(last,director);
@@ -171,15 +168,15 @@ MovieStore::printMoviesOfDirector(const std::string & director,
 }
 
 
-
-void  // implemented, do not change
+// A function prints primaryIndex sorted.
+void  
 MovieStore::printPrimarySorted( ) const
 {
   printPrimarySorted(primaryIndex.getRoot());
 }
 
-
-void  // implemented, do not change
+// A recursive utility function to print primaryIndex sorted.
+void  
 MovieStore::printPrimarySorted(MSTP::Node * t) const
 {
   if (t == NULL)
@@ -192,16 +189,16 @@ MovieStore::printPrimarySorted(MSTP::Node * t) const
   printPrimarySorted(t->right);
 }
 
-
-void  // implemented, do not change
+// A function prints secondaryIndex sorted.
+void  
 MovieStore::printSecondarySorted( ) const
 {
 	
   printSecondarySorted(secondaryIndex.getRoot());
 }
 
-
-void  // implemented, do not change
+// A recursive utility function to print secondaryIndex sorted.
+void  
 MovieStore::printSecondarySorted(MSTS::Node * t) const
 {
 
@@ -215,15 +212,15 @@ MovieStore::printSecondarySorted(MSTS::Node * t) const
   printSecondarySorted(t->right);
 }
 
-
-void  // implemented, do not change
+// A function prints ternaryIndex sorted.
+void  
 MovieStore::printTernarySorted( ) const
 {
   printTernarySorted(ternaryIndex.getRoot());
 }
 
-
-void  // implemented, do not change
+// A recursive utility function to print ternaryIndex sorted.
+void  
 MovieStore::printTernarySorted(MSTT::Node * t) const
 {
   if (t == NULL)

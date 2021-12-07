@@ -27,7 +27,7 @@ class MovieBalanceCondition
 };
 
 
-class MovieStore  // do not change this file, you cannot add any other functions here
+class MovieStore
 {
   public:
     MovieStore();
@@ -60,12 +60,12 @@ class MovieStore  // do not change this file, you cannot add any other functions
     }
 
   protected:
-    typedef Movie::SecondaryKey SKey;
-    typedef BinarySearchTree<std::string, Movie, MovieBalanceCondition> MSTP;
+    typedef Movie::SecondaryKey SKey; //typedef for secondary key
+    typedef BinarySearchTree<std::string, Movie, MovieBalanceCondition> MSTP; //primaryIndex
     typedef BinarySearchTree<SKey, const Movie *, 
-                             MovieBalanceCondition, DirectorComparator> MSTS;
+                             MovieBalanceCondition, DirectorComparator> MSTS; //secondaryIndex
     typedef BinarySearchTree<SKey, Movie *,
-                             MovieBalanceCondition, TitleComparator> MSTT;
+                             MovieBalanceCondition, TitleComparator> MSTT; //ternaryIndex
 
   protected:
     void printPrimarySorted(MSTP::Node *) const;

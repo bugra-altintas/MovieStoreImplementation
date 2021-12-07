@@ -227,7 +227,7 @@ If Key exists, the function just updates it. Insertion example when the paramete
 within the tree is shown in Figure 2.*/
 template <typename K, typename O, typename B, typename C>
 void
-BinarySearchTree<K,O,B,C>::insert(const K & k, const O & x) //CHECK COMPLEXITY!!
+BinarySearchTree<K,O,B,C>::insert(const K & k, const O & x) 
 {
 	
 	if(root == NULL){
@@ -292,7 +292,7 @@ BinarySearchTree<K,O,B,C>::insert(const K & k, const O & x, Node* &t){
 // A function removes the node with given Key, if it exists.
 template <typename K, typename O, typename B, typename C>
 void
-BinarySearchTree<K,O,B,C>::remove(const K & k) //CHECK COMPLEXITY!!
+BinarySearchTree<K,O,B,C>::remove(const K & k) 
 {
 	if(root == NULL)
 		return;
@@ -372,7 +372,7 @@ BinarySearchTree<K,O,B,C>::remove(const K & k,Node *&t){
 // A utility function moves a given node t to the place of given node q. It does not copy anything, only pointer, height and subsize adjustments.  
 template <typename K, typename O, typename B, typename C>
 void
-BinarySearchTree<K,O,B,C>::move(Node *&t, Node *&q){ //CHECK COMPLEXITY!!
+BinarySearchTree<K,O,B,C>::move(Node *&t, Node *&q){ 
 	if(q->left == NULL){
 		if(q == t->right){
 			Node *tmpq = q;
@@ -456,7 +456,7 @@ that the first Key parameter isLessThan or equal to the second and that the inte
 */
 template <typename K, typename O, typename B, typename C>
 std::list<typename BinarySearchTree<K,O,B,C>::Node *>
-BinarySearchTree<K,O,B,C>::find(const K & lower, const K & upper) const //CHECK COMPLEXITY!!
+BinarySearchTree<K,O,B,C>::find(const K & lower, const K & upper) const 
 {
   std::list<Node *> ranges;
   find(lower,upper,root,ranges); // utility function

@@ -1,8 +1,6 @@
 #include "movie.h"
 
 
-//do not change this file, everything is implemented
-
 
 Movie::Movie(const std::string & _id, const std::string & _title,
            const std::string & _director, const std::string & _company,

@@ -27,5 +27,22 @@ Conversion of a BST of size 5 into a complete BST:
 Insertion example when the parameter key does not exist within the tree:
 ![Insertion example](/figure2.png)
 
+<<<<<<< Updated upstream
 Removal of a node having two children
 ![Removal example](/figure3.png)
+=======
+
+## - Movie Store Part
+**MovieStore** constitutes an application relying on the BST.
+
+**Movie** class represents the information needed to be stored for each item in the movie store. A **Movie** includes an **id**, **title**, **director**, **company**, production **year**, **duration** in minutes and **status** to indicate whether the movie is in stock or not. Each movie is uniquely identified by its **id**. There are no two movies with the same **title** and **director**. Unique **title** and **director** pair is also regrouped into **Movie::SecondaryKey** class type and variables of this type are used in building secondary index trees. For details of **Movie** class, inspecting *movie.h* would be nice. Some basic methods of this class can be found in *movie.cpp*.
+
+Implementation of **TitleComparator** type that intends to compare two **Movie::SecondaryKey** objects primarily based on their **titles** is completed by coding only the inline **operator()(constMovie::SecondaryKey &, const Movie::SecondaryKey &) const** member function with respect
+to some specifications in *title_comparator.h* file. It performs a **case-insensitive**, **lexicographic** comparison between the **titles** of two key arguments. If the first **title** comes before the second, it returns **true**. If the two **titles** are equal, then it compares the two **directors** and returns **true** only if the first director comes before the second. Otherwise, it returns **false**.
+Implementation of **DirectorComparator** type that intends to compare two **Movie::SecondaryKey** objects primarily based on their **directors**. The details are same as **TitleComparator** except for what they primarily based on.
+
+**MovieStore** class includes three **BinarySearchTree** indices, **primaryIndex**,
+**secondaryIndex** and **ternaryIndex**. Their types are aliased with shorter names using **typedef** under the **private** section. **primaryIndex** of shorter type name **MSTP** stores actual Movie objects and uses the default lexicographic ordering of **id** values to build itself and yet **secondaryIndex** of new type name **MSTS** and **ternaryIndex** of new type name **MSTT** are both rely on **secondary key** objects of new type name **SKey** values, and these values are ordered utilizing **DirectorComparator** and **TitleComparator** classes, respectively.
+Balance condition for all these trees are implemented in **MovieBalanceCondition** class in *moviestore.h* file. There are several methods that **MovieStore** class has. Implementation and explanations of them can be found in *moviestore.cpp*. Inspecting the *moviestore.h*, *moviestore.cpp* would be nice for the detail of class.
+
+>>>>>>> Stashed changes
