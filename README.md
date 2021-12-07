@@ -30,7 +30,7 @@ Insertion example when the parameter key does not exist within the tree:
 Removal of a node having two children:
 ![Removal example](/figures/figure3.png)
 
-## - Movie Store Part
+## Movie Store Part
 **MovieStore** constitutes an application relying on the BST.
 
 **Movie** class represents the information needed to be stored for each item in the movie store. A **Movie** includes an **id**, **title**, **director**, **company**, production **year**, **duration** in minutes and **status** to indicate whether the movie is in stock or not. Each movie is uniquely identified by its **id**. There are no two movies with the same **title** and **director**. Unique **title** and **director** pair is also regrouped into **Movie::SecondaryKey** class type and variables of this type are used in building secondary index trees. For details of **Movie** class, inspecting *movie.h* would be nice. Some basic methods of this class can be found in *movie.cpp*.
