@@ -22,15 +22,13 @@ Constructor and public interface methods are implemented in *bst.h* file. Explan
 Definiton of a complete tree: geeksforgeeks.org/binary-tree-set-3-types-of-binary-tree/
 
 Conversion of a BST of size 5 into a complete BST:
-![Complete tree](/conversion_to_complete_tree.png)
+![Complete tree](/figures/conversion_to_complete_tree.png)
 
 Insertion example when the parameter key does not exist within the tree:
-![Insertion example](/figure2.png)
+![Insertion example](/figures/figure2.png)
 
-<<<<<<< Updated upstream
-Removal of a node having two children
-![Removal example](/figure3.png)
-=======
+Removal of a node having two children:
+![Removal example](/figures/figure3.png)
 
 ## - Movie Store Part
 **MovieStore** constitutes an application relying on the BST.
@@ -44,5 +42,3 @@ Implementation of **DirectorComparator** type that intends to compare two **Movi
 **MovieStore** class includes three **BinarySearchTree** indices, **primaryIndex**,
 **secondaryIndex** and **ternaryIndex**. Their types are aliased with shorter names using **typedef** under the **private** section. **primaryIndex** of shorter type name **MSTP** stores actual Movie objects and uses the default lexicographic ordering of **id** values to build itself and yet **secondaryIndex** of new type name **MSTS** and **ternaryIndex** of new type name **MSTT** are both rely on **secondary key** objects of new type name **SKey** values, and these values are ordered utilizing **DirectorComparator** and **TitleComparator** classes, respectively.
 Balance condition for all these trees are implemented in **MovieBalanceCondition** class in *moviestore.h* file. There are several methods that **MovieStore** class has. Implementation and explanations of them can be found in *moviestore.cpp*. Inspecting the *moviestore.h*, *moviestore.cpp* would be nice for the detail of class.
-
->>>>>>> Stashed changes
